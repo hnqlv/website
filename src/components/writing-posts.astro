@@ -1,0 +1,33 @@
+---
+import { type CollectionEntry } from "astro:content";
+import { formatDate } from "@config";
+
+export interface Props {
+  posts: CollectionEntry<"writing">[];
+}
+
+const { posts } = Astro.props;
+---
+
+<style>
+  h3 {
+    margin-bottom: 0.15rem;
+  }
+</style>
+
+<div class="list">
+  {
+    posts.map((entry) => (
+      <div>
+        <h3>
+          <a href={`/writing/${entry.slug}`} class="page">
+            {entry.data.title}
+          </a>
+        </h3>
+        <p class="muted">
+          {formatDate(entry.data.date)} • {entry.data.tags.join(", ")}
+        </p>
+      </div>
+    ))
+  }
+</div>

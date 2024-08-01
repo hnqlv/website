@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { metadata } from "@config";
+import { getPosts } from "@content/config";
+import Base from "@layouts/base.astro";
+import Header from "@components/header.astro";
+import TravelPosts from "@components/travel-posts.astro";
+import WritingPosts from "@components/writing-posts.astro";
+
+const frontmatter: CollectionEntry<"page">["data"] = {
+	title: "Henrique Alves, Developer",
+	description: metadata.description,
+};
+
+const travelPosts = await getPosts("travel");
+const writingPosts = await getPosts("writing");
+---
+
+<Base frontmatter={frontmatter}>
+	<Header />
+	<WritingPosts posts={writingPosts} />
+	<TravelPosts posts={travelPosts} />
+</Base>

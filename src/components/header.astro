@@ -1,0 +1,38 @@
+---
+import Avatar from "./avatar.astro";
+---
+
+<style>
+  h1 {
+    font-weight: 580;
+    margin-bottom: 0.15rem;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  nav {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  li a {
+    color: #a1a1a1;
+  }
+</style>
+
+<header>
+  <Avatar />
+  <h1>Henrique Alves</h1>
+  <h2>Developer</h2>
+</header>
+<nav class="nav">
+  <ul>
+    <li><a href="/about" title="About" class="muted page">About</a></li>
+    <li><a href="/writing" title="Writing" class="muted page">Writing</a></li>
+    <li><a href="/travel" title="Travel" class="muted page">Travel</a></li>
+  </ul>
+</nav>

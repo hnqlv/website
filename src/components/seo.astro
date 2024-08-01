@@ -1,0 +1,34 @@
+---
+import { getImage } from "astro:assets";
+import { metadata } from "@config";
+import og from "@images/avatar.png";
+
+const { frontmatter } = Astro.props;
+const isDev = import.meta.env.DEV;
+const siteurl = new URL(
+  isDev ? import.meta.env.BASE_URL : metadata.baseUrl,
+  Astro.url,
+);
+const image = await getImage({
+  src: frontmatter.og || og,
+  width: frontmatter.og ? 1200 : 432,
+  format: "jpg",
+});
+const imageUrl = new URL(image.src, siteurl).toString();
+---
+
+<meta name="description" content={frontmatter.description} />
+<meta property="og:type" content="website" />
+<meta property="og:title" content={frontmatter.title} />
+<meta property="og:description" content={frontmatter.description} />
+<meta property="og:site_name" content={frontmatter.title} />
+<meta property="og:image" content={imageUrl} />
+<meta property="twitter:image" content={imageUrl} />
+<meta
+  property="twitter:card"
+  content={frontmatter.og ? "summary_large_image" : "summary"}
+/>
+<meta property="twitter:site" content={metadata.author.twitter} />
+<meta property="twitter:creator" content={metadata.author.twitter} />
+<meta property="twitter:title" content={frontmatter.title} />
+<meta property="twitter:description" content={frontmatter.description} />

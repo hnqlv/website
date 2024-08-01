@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+---
+
+<style>
+  .avatar {
+    margin-bottom: 1.5rem;
+    border-radius: 50%;
+  }
+</style>
+
+<Image
+  class="avatar"
+  src="/images/avatar.png"
+  width="60"
+  height="60"
+  alt="Photo of Henrique"
+  quality="max"
+  densities={[1.5, 2, 3]}
+/>

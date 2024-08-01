@@ -1,0 +1,36 @@
+---
+import Posts from "@components/writing-posts.astro";
+import { metadata } from "@config";
+import { getPosts } from "@content/config";
+import Base from "@layouts/base.astro";
+import type { CollectionEntry } from "astro:content";
+
+const frontmatter: CollectionEntry<"page">["data"] = {
+  title: "Travel — Henrique Alves",
+  description: metadata.description,
+};
+
+const posts = await getPosts("writing");
+---
+
+<style>
+  .nav {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .heading {
+    font-weight: 500;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+  }
+</style>
+
+<Base frontmatter={frontmatter}>
+  <nav class="nav">
+    <a href="/" class="plain">&larr;</a>
+  </nav>
+  <h3 class="heading">Writing</h3>
+  <Posts {posts} />
+</Base>

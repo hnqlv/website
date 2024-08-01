@@ -1,0 +1,93 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { metadata } from "@config";
+import Base from "@layouts/base.astro";
+
+const frontmatter: CollectionEntry<"page">["data"] = {
+  title: "About Henrique Alves",
+  description: metadata.description,
+};
+---
+
+<style>
+  nav {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+  }
+
+  h1 {
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 1.8rem;
+  }
+</style>
+
+<Base frontmatter={frontmatter}>
+  <nav>
+    <a href="/" class="plain">&larr;</a>
+  </nav>
+  <h1>About</h1>
+  <p>
+    I am a Full-Stack Developer with background on user experience and design
+    across the Europe and the US markets.
+  </p>
+  <p>
+    I value <a
+      href="http://www.catb.org/~esr/writings/taoup/html/ch01s06.html#id2877917"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="external-link">simplicity</a
+    >, and <a
+      href="https://teenage.engineering/products"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="external-link">thoughtful design</a
+    >. I enjoy discovering new destinations with my family and a good coffee.
+  </p>
+  <h3>Now</h3>
+  <p>
+    Building video, voice call and messaging communication services at
+    <a
+      href="https://www.ameelio.org/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="external-link">Ameelio</a
+    >, helping to create a more humane and rehabilitative corrections system.
+  </p>
+  <h3>Previously</h3>
+  <p>
+    My most recent roles were at <a
+      href="https://tm.community/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="external-link">TM</a
+    > building a meditation and lyfestyle app, and at <a
+      href="https://eola.co/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="external-link">eola</a
+    > building their booking calendar frontend.
+  </p>
+  <h3>Technologies & methods</h3>
+  <p>
+    I'm most familiar with: TypeScript, Node.js, React, React Native, Jest,
+    React Testing, GraphQL, TypeORM, Postgres, Docker, and distributed systems.
+  </p>
+  <h3>Off the clock</h3>
+  <p>
+    When I'm not coding, I'm training Brazilian Jiu-Jitsu (BJJ), cooking dinner,
+    playing board games with my daughters. Currently, our favorite games are
+    Zombie Kittens, Sequence, and Blokus.
+  </p>
+</Base>

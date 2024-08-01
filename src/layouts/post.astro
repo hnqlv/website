@@ -1,0 +1,119 @@
+---
+import Base from "@layouts/base.astro";
+import { formatDate } from "@config";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  entry: CollectionEntry<"travel" | "writing">;
+}
+
+const { entry } = Astro.props;
+---
+
+<style is:global>
+  nav {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+  }
+
+  article {
+    margin-bottom: 3rem;
+  }
+
+  article header {
+    margin-bottom: 2rem;
+  }
+
+  article h1 {
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+
+  article h3 {
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  article p {
+    margin-bottom: 1.8rem;
+  }
+
+  article .fluid {
+    margin-left: -12rem;
+    margin-right: -12rem;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  article ol,
+  ul {
+    padding: 0;
+    margin: 0 3rem 2rem 2rem;
+  }
+
+  article ul li {
+    list-style-type: disc;
+  }
+
+  article ol li {
+    list-style-type: decimal;
+  }
+
+  article code {
+    display: inline-block;
+    font-size: 0.8em;
+    background-color: #f9f9fb;
+    box-shadow: 1px 1px 1px #e8e8ec;
+    padding: 1px 6px;
+    border-radius: 6px;
+  }
+
+  article pre {
+    margin: 2rem 0;
+    border-radius: 4px;
+    background: #f9f9fb !important;
+    box-shadow: 1px 1px 1px #e8e8ec;
+    font-size: 0.9em;
+  }
+
+  article pre code {
+    width: 100%;
+    padding: 8px 12px;
+  }
+
+  @media (max-width: 640px) {
+    article .fluid {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+</style>
+
+<Base
+  frontmatter={{
+    title: entry.data.title,
+    description: entry.data.summary,
+  }}
+>
+  <article>
+    <header>
+      <nav>
+        <a href="/" class="page">Home</a>
+      </nav>
+      <h1>{entry.data.title}</h1>
+      <p class="muted">
+        {formatDate(entry.data.date, "long")} · {entry.data.tags.join(", ")}
+      </p>
+    </header>
+    <slot />
+  </article>
+</Base>
