@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import avatarSrc from "@images/avatar.png";
 ---
 
 <style>
@@ -11,7 +12,7 @@ import { Image } from "astro:assets";
 
 <Image
   class="avatar"
-  src="/images/avatar.png"
+  src={avatarSrc}
   width="60"
   height="60"
   alt="Photo of Henrique"

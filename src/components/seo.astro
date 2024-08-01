@@ -22,12 +22,25 @@ const imageUrl = new URL(image.src, siteurl).toString();
 <meta property="og:title" content={frontmatter.title} />
 <meta property="og:description" content={frontmatter.description} />
 <meta property="og:site_name" content={frontmatter.title} />
-<meta property="og:image" content={imageUrl} />
-<meta property="twitter:image" content={imageUrl} />
-<meta
-  property="twitter:card"
-  content={frontmatter.og ? "summary_large_image" : "summary"}
-/>
+
+{frontmatter.og ? (
+  <>
+    <meta property="og:image" content={imageUrl} />
+    <meta property="twitter:image" content={imageUrl} />
+    <meta
+      property="twitter:card"
+      content={"summary_large_image"}
+    />
+  </>
+) : (
+  <meta property="og:image" content="/images/avatar.png" />
+  <meta property="twitter:image" content="/images/avatar.png" />
+  <meta
+      property="twitter:card"
+      content={"summary"}
+    />
+)}
+
 <meta property="twitter:site" content={metadata.author.twitter} />
 <meta property="twitter:creator" content={metadata.author.twitter} />
 <meta property="twitter:title" content={frontmatter.title} />

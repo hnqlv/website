@@ -14,5 +14,8 @@
     "@astrojs/mdx": "^3.1.2",
     "astro": "^4.12.2",
     "typescript": "^5.5.2"
+  },
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.5.8"
   }
 }
